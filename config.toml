@@ -53,7 +53,7 @@ posts = "/posts/:year/:month/:day/:slug/"
     # Edit by yourself:
     GithubEdit = "https://github.com/DuPractice/DuPractice.github.io/edit/master/content/"
     copyright = "&copy;"
-    copyrightYear = "2020-2021"
+    copyrightYear = "2023-2024"
     # Edit by yourself:
     GithubRepo = "https://github.com/DuPractice/DuPractice.github.io"
     # Edit by yourself:
@@ -69,8 +69,8 @@ posts = "/posts/:year/:month/:day/:slug/"
 [params.lang]
 
     [params.lang.author]
-      en = "Your Name"
-      cn = "你的名字"
+      en = "Xinting Du"
+      cn = "杜新婷"
 
     [params.lang.madeWith]
       en = "Made with"

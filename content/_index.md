@@ -3,7 +3,7 @@ title: Home
 ---
 
 
-{{<figure src="/media/photo.png" width="450">}}
+{{<figure src="/media/photo.png" width="350">}}
 
 I graduated with a Master's degree in Media Arts and Sciences from [the Media School of Indiana University](https://mediaschool.indiana.edu/index.html) in 2020, advised by [Dr. Nicole Martins](https://mediaschool.indiana.edu/people/profile.html?p=nicomart). From August 2020 to August 2021, I volunteered as a research assistant for [YY](http://yongyeol.com/). I earned my first Master's degree in Journalism from Renmin University of China, Beijing. I am now a second-year PhD student in Computer Sciences at the University of Wisconsin-Madison. 
 

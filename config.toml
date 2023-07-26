@@ -2,42 +2,46 @@ baseURL = "https://dupractice.github.io/"
 languageCode = "en-us"
 title = "Hugo-Du"
 theme = "hugo-ht"
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 footnotereturnlinkcontents = "↩"
 enableRobotsTXT = true
-# enableGitInfo = true
+enableGitInfo = true
 
 [permalinks]
 cn = "/cn/:year/:month/:day/:slug/"
 en = "/en/:year/:month/:day/:slug/"
-posts = "/posts/:year/:month/:day/:slug/"
+
+
+[frontmatter]
+ lastmod = ["lastmod", ":git", "date", "publishDate"]
 
 [[menu.en]]
     name = "Home"
     url = "/"
     weight = 1
 [[menu.en]]
-    name = "About"
-    url = "/en/about/"
+    name = "Projects"
+    url = "/en/projects/"
     weight = 2
 [[menu.en]]
-    name = "Posts"
-    url = "/en/posts/"
+    name = "Research"
+    url = "/en/research/"
     weight = 3
 [[menu.en]]
-    name = "hobby"
-    url = "/en/hobby/"
+    name = "Blog"
+    url = "/en/blog/"
     weight = 4
 [[menu.en]]
     name = "中文"
-    url = "/cn/posts/"
-    weight = 4
+    url = "/cn/blog/"
+    weight = 5
 [[menu.cn]]
     name = "关于"
-    url = "/cn/about/"
+    url = "/cn/"
     weight = 1
 [[menu.cn]]
     name = "日志"
-    url = "/cn/posts/"
+    url = "/cn/blog/"
     weight = 2
 [[menu.cn]]
     name = "English"
@@ -46,10 +50,10 @@ posts = "/posts/:year/:month/:day/:slug/"
 
 [params]
     description = "Peronal website of Xinting Du"
-    homeText = "You just need a Hugo blog from scratch"
+    homeText = "Xinting Du's Personal Website"
     # Please make sure `blogDirNmae` matches the name used in `menu` above:
-    blogDirName = "posts"
-    # singleLang = true
+    blogDirName = "blog"
+    singleLang = false
     defaultLang = "en"
     MathJaxCDN = "//cdnjs.cloudflare.com/ajax/libs" 
     MathJaxVersion = "2.7.5"

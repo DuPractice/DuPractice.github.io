@@ -67,6 +67,10 @@ en = "/en/:year/:month/:day/:slug/"
     # Edit by yourself:
     ContentSource = "https://raw.githubusercontent.com/DuPractice/DuPractice.github.io/master/content/" 
 
+[params.utterances]
+    owner = "DuPractice"
+    repo = "DuPractice.github.io"
+
 [params.logo]
   # Change the logo picture as your prefer:
   url = "media/hugo-logo.png" # you can change it

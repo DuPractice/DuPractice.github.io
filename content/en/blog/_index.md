@@ -3,5 +3,5 @@ title: 'English blog'
 date: ''
 ---
 
-## Posts
+## Code ·  life · random thoughts
 

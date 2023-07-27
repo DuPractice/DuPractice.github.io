@@ -1,78 +1,62 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2113.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
-  </style>
-</head>
-<body>
-<p class="p1"><span class="s1">&lt;footer class="footer"&gt;</span></p>
-<p class="p1"><span class="s1">{{ if and (not .IsSection) (not .IsHome) }}</span></p>
-<p class="p1"><span class="s1">&lt;script src="https://utteranc.es/client.js"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>repo=“DuPractice/DuPractice.github.io"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>issue-term="pathname"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>theme="github-light"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>crossorigin="anonymous"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>async&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">{{ end }}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>{{ partial "foot_custom.html" . }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>&lt;ul class="footer-links"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{{ if .IsHome }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>&lt;li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="https://gohugo.io/" class="footer-links-kudos" target="_blank"&gt;Made with &lt;img src="/media/hugo-logo.png" width="22" height="22"&gt;&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>{{ with .Site.Params.GithubRepo}}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>&lt;li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href='{{ . }}' class="footer-links-kudos" target="_blank"&gt;<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>{{ default (index $.Site.Params.Lang.sourceCode $.Site.Params.defaultLang) (index $.Site.Params.lang.sourceCode $.Section) }}<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;i class="fa fa-github" style="font-size: 24px"&gt;&lt;/i&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>{{ end }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>{{ end }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>{{ if not .IsHome }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>{{ with .Site.Params.singleLang }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>&lt;li&gt;&lt;a href="/{{ $.Site.Params.blogDirName }}/index.xml" type="application/rss+xml" title="RSS feed"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>{{ else }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>{{ with .Section }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>&lt;li&gt;&lt;a href="/{{ . }}/{{ $.Site.Params.blogDirName }}/index.xml" type="application/rss+xml" title="RSS feed"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>{{ default "Subscribe" (index $.Site.Params.lang.subscribe $.Section) }} &lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>{{ end }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>{{ end }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>&lt;li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>{{ if eq .Section "cn"}}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>&lt;a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>{{ else }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>{{ end }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>{{ default (index $.Site.Params.Lang.license $.Site.Params.defaultLang) (index $.Site.Params.lang.license $.Section) }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"&gt;&lt;/i&gt;<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>{{ end }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>&lt;div class="copyright-text"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{{ with .Site.Params.copyright }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{{ .| markdownify }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{{ end }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{{ default (index $.Site.Params.lang.author $.Site.Params.defaultLang) (index $.Site.Params.lang.author $.Section) }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{{ with .Site.Params.copyrightYear }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{{ .| markdownify }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{{ end }}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;/footer&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1"></span><br></p>
-</body>
-</html>
+<footer class="footer">
+{{ if and (not .IsSection) (not .IsHome) }}
+<script src="https://utteranc.es/client.js"
+        repo="hongtaoh/hongtaoh.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+{{ end }}
+
+  {{ partial "foot_custom.html" . }}
+     <ul class="footer-links">
+      {{ if .IsHome }}
+       <li>
+        <a href="https://gohugo.io/" class="footer-links-kudos" target="_blank">Made with <img src="/media/hugo-logo.png" width="22" height="22"></a>
+       </li>
+       {{ with .Site.Params.GithubRepo}}
+       <li>
+        <a href='{{ . }}' class="footer-links-kudos" target="_blank"> 
+          {{ default (index $.Site.Params.Lang.sourceCode $.Site.Params.defaultLang) (index $.Site.Params.lang.sourceCode $.Section) }} 
+          <i class="fa fa-github" style="font-size: 24px"></i>
+        </a>
+       </li>
+       {{ end }}
+       {{ end }}
+       {{ if not .IsHome }}
+       {{ with .Site.Params.singleLang }}
+       <li><a href="/{{ $.Site.Params.blogDirName }}/index.xml" type="application/rss+xml" title="RSS feed">
+       {{ else }}
+       {{ with .Section }}
+       <li><a href="/{{ . }}/{{ $.Site.Params.blogDirName }}/index.xml" type="application/rss+xml" title="RSS feed">
+       {{ default "Subscribe" (index $.Site.Params.lang.subscribe $.Section) }} </a>
+       </li>
+       {{ end }}
+       {{ end }}
+       <li>
+       {{ if eq .Section "cn"}}
+       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">
+       {{ else }}
+        <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
+       {{ end }}
+        {{ default (index $.Site.Params.Lang.license $.Site.Params.defaultLang) (index $.Site.Params.lang.license $.Section) }}
+        <i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i> 
+        </a>
+       </li>
+       {{ end }}
+     </ul>
+     <div class="copyright-text">
+            {{ with .Site.Params.copyright }}
+            {{ .| markdownify }}
+            {{ end }}
+            {{ default (index $.Site.Params.lang.author $.Site.Params.defaultLang) (index $.Site.Params.lang.author $.Section) }}
+            {{ with .Site.Params.copyrightYear }}
+            {{ .| markdownify }}
+            {{ end }}
+     </div>
+
+</footer>
+
+
+

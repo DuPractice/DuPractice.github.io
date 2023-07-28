@@ -176,8 +176,19 @@ for i in range(10, 30, 5):
 for i in range(1, 4):
     for j in range(1, 4):
         if i == 2 and j == 2:
-            break
+            break ## when breaks, it will end the whole loop, that's why the i becomes 3
 print(i, j)
+
+var = 7
+while var > 0:
+    var -= 1
+    if var == 5:
+        continue ## continue here will skip the rest in the loop and begin with a new loop
+    if var == 2:
+        break
+    print('Current variable value :', var)
+print("Good bye!")
+
   
 
 ```

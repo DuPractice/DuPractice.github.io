@@ -21,7 +21,7 @@ In [When a R user began coding with Python I](), we learn about:
 
 2. This document
 
-In this document, we push forward the learning process and focus on three data structures used to store and organize data: list, dictionary, and tuple.
+In this document, we push forward the learning process and focus on four data structures used to store and organize data: list, dictionary, and tuple.
 
 
 ## List:
@@ -111,7 +111,8 @@ salary = {'Jane': 100,
  salary['Jane']
  
  ## 
-assign new values to existing key:salary['Jess'] = 175
+assign new values to existing key:
+salary['Jess'] = 175
 salary['Jess']
  
 ```

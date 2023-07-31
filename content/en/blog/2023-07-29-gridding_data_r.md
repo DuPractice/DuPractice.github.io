@@ -1,5 +1,5 @@
 ---
-title: When a R user began coding with Python III
+title: Gridding data in R
 date: 2023-07-25T16:00:21-04:00
 author: Xinting Du
 slug: bookdown-tips
@@ -12,7 +12,7 @@ tags: Python
 
 I am pushing forward one of my projects, in which I wish to analyze on the grid level instead of on the administrative level. This kind of aggregation is popular in several studies, name a few, [Besley and Reynal-Querol \(2014\)](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/legacy-of-historical-conflict-evidence-from-africa/6AD09AD8FDC0A82242F1873B6AB3478F), [Michalopoulos and Papaioannou \(2016\)](https://www.aeaweb.org/articles?id=10.1257/aer.20131311), and [Berman, et al \(2017\)](https://www.aeaweb.org/articles?id=10.1257/aer.20150774). While I was doing that, I confronted several problems and finally figured them out.
 
-[Reference](https://stackoverflow.com/questions/52937483/r-fitting-a-grid-over-a-city-map-and-inputting-data-into-grid-squares) in stackoverflow:
+[Reference](https://stackoverflow.com/questions/52937483/r-fitting-a-grid-over-a-city-map-and-inputting-data-into-grid-squares) in stackoverflow \(Notice that the code on this page could be wrong\):
 
 Code in this page used the georeferenced data of San Jose and a randomly-created crime data as an example.
 The workflow is:
@@ -76,6 +76,7 @@ plot(theft_grid["num_thefts"])
 assault_grid <- g %>%
   st_join(assaults) %>%
   group_by(id) %>%
+  na.omit() %>%
   summarize(num_assaults = n()) 
 
 st_geometry(assault_grid) <- NULL

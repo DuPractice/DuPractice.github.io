@@ -3,7 +3,7 @@ title: Home
 ---
 
 
-{{<figure src="/media/photo.png" width="350">}}
+{{<figure src="/media/photo.png" width="450">}}
 
 I am an M.Phil. student in Social Science at Hong Kong University of Science and Technology, supervised by Professor Li Han.
 

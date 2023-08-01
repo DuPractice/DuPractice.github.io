@@ -5,7 +5,7 @@ author: Xinting Du
 slug: bookdown-tips
 draft: false
 toc: true
-tags: Python
+tags: R
 ---
 
 

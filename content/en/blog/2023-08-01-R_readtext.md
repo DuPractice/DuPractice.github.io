@@ -9,7 +9,7 @@ tags: R
 ---
 
 
-# Past
+## Past
 Reading text files is always the first step when analyzing the text data. However, it could be challenging. Before I get to know the **package 'readtext'**, I used to write a loop to import data like the following code.
 
 
@@ -34,7 +34,7 @@ One advantage is that the for loop could also be applied on importing data more 
 
 
 
-# Package readtext
+## Package readtext
 
 This package could be really powerful if you have many individual files and did not combine them yet, or your data is in many formats and have many variables you want to keep them as covariates.
 

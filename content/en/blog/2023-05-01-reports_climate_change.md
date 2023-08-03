@@ -30,6 +30,8 @@ This is a collection of newspaper articles related to climate and environment, w
   - A Desperate Push to Save Florida's Coral: Get It Out of the Sea, NYT, Jul/31/2023, [link](https://www.nytimes.com/2023/07/31/climate/coral-reefs-heat-florida-ocean-temperatures.html).
   - Heat Is Costing the U.S. Economy Billions in Lost Productivity, NYT, Jul/31/2023, [link](https://www.nytimes.com/2023/07/31/climate/heat-labor-productivity-climate.html).
     1. “We’ve known for a very long time that human beings are very sensitive to temperature, and that their performance declines dramatically when exposed to heat, but what we haven’t known until very recently is whether and how those lab responses meaningfully extrapolate to the real-world economy,” said R. Jisung Park, an environmental and labor economist at the University of Pennsylvania. “And what we are learning is that hotter temperatures appear to muck up the gears of the economy in many more ways than we would have expected.”
+  - Extreme Heat Shows the Need for Another Kind of Climate Investment, NYT, Jul/22/2023, [link](https://www.nytimes.com/2023/07/22/business/dealbook/extreme-heat-climate-investment.html).
+    
 
    
  

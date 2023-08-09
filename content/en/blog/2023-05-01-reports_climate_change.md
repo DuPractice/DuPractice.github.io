@@ -40,6 +40,17 @@ This is a collection of newspaper articles related to climate and environment, w
   - Global Warming Is Bringing Change Than Just Heat, NYT, Jul/19/2023, [link](https://www.nytimes.com/2023/07/19/world/climate-change-migration.html).
     1. Climate change is already affecting the world in powerful ways. But it could also drive mass migration and reshape societies as its consequences add up.
   - Yellen Urges China to Step Up Climate Finance Investment, Jul/7/2023, [link]().
-
-   
- 
+  - Wildfire Forces Thousands to Evacuate in Canary Islands, NYT, Jul/17/2023, [link](https://www.nytimes.com/2023/07/17/world/europe/europe-heat-wildfire-spain-canary-islands.html).
+    1. Last summer, dozens of wildfires swept through Spain for days, displacing thousands of residents and consuming a record 750,000 acres, according to data from the European Forest Fire Information System.
+  - Surviving Extreme Heat, NYT, Jul/13/2023, [link](https://www.nytimes.com/2023/07/13/climate/surviving-extreme-heat.html).
+  - Leaks Can Make Natural Gas as Bad for the Climate as Coal, a Study Says, NYT, Jul/13/2023, [link](https://www.nytimes.com/2023/07/13/climate/natural-gas-leaks-coal-climate-change.html).
+    1. But natural gas is made up mostly of methane, which is a far more potent planet-warming gas, in the short term, than carbon dioxide when it escapes unburned into the atmosphere.
+  - The Once and Future Climate Emergency, NYT, Jul/12/2023, [link](https://www.nytimes.com/2023/07/12/world/climate-change-prevention-response.html).
+    1. [One paper](https://www.cambridge.org/core/journals/american-political-science-review/article/myopic-voters-and-natural-disaster-policy/039708A3223EC114365ADF56F1D26423), for instance, found that voters reward politicians for delivering emergency relief for natural disasters, but not for investing in natural-disaster preparedness — even though \$1 spent on preparedness was worth approximately $15 in emergency response. That can create misaligned incentives.
+    2. A lot of climate messaging focuses on the need to prevent catastrophe. But the floods and mudslides and smoke-filled air and deadly heat are a reminder that climate change is already worsening disasters and factoring into new ones. The question is whether that will make the future seem closer and generate new political will for preventing harm, not just reacting to it.
+  - Summer Heat Waves Killed 61,000 in Europe Last Year, Study Says, NYT, Jul/10/2023, [link](https://www.nytimes.com/2023/07/10/climate/heat-waves-europe-deaths.html).
+  - A New Kind of Disaster Aid: Pay People Cash, Before Disaster Strikes, NYT, Jul/3/2023, [link](https://www.nytimes.com/2023/07/03/climate/cash-disaster-relief.html).
+    1. The reason these one-off payments, known as anticipatory cash relief, matter now is that disasters are being supersized by human-induced climate change, and they’re often inflicting the most pain on the poorest people in the world. When crops or property are uninsured, sudden disasters like floods, or a slow ones, like droughts, can be ruinous. People can lose their only means to make a living, their land, and their only assets, livestock animals.
+  - Lithium Scarcity Pushes Carmakers Into the Mining Business, NYT, Jul/2/2023, [link](https://www.nytimes.com/2023/07/02/business/lithium-mining-automakers-electric-vehicles.html).
+    1. The deals that automakers are striking with mining companies and raw material processors hark back to the beginnings of the industry, when Ford set up rubber plantations in Brazil to secure material for tires. 
+    2. In June, the Chinese battery maker CATL completed an agreement with Bolivia to invest $1.4 billion in two lithium projects.

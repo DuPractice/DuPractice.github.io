@@ -1,15 +1,14 @@
 ---
-title: "Markdown Testing"
-date: 2023-05-07T13:37:57-05:00
-author: Your Name
+title: "News Collection: Climate and Environment"
+date: 2023-05-01T13:37:57-05:00
+author: Xinting Du
 slug: second-post
-draft: false/Users/ducity/Dropbox/Mac (2)/Desktop/quickstart/content/en/blog/2023-05-01-reports_climate_change.md
+draft: false
 toc: false
-categories:
-  - test
 tags:
-  - article
-  - English
+  - climate
+  - environment
+  - news
 ---
 
 
@@ -17,7 +16,7 @@ tags:
 
 {{<block class="reminder">}}
 
-This is a collection of newspaper articles related to climate and environment, which I am interested in.
+This is a collection of newspaper articles related to climate and the environment, which I am interested in.
 
 {{<end>}}
 

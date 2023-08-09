@@ -1,6 +1,6 @@
 ---
 title: When a R user began coding with Python III
-date: 2023-07-25T16:00:21-04:00
+date: 2023-07-28T16:00:21-04:00
 author: Xinting Du
 slug: bookdown-tips
 draft: false

@@ -1,0 +1,88 @@
+<a name=top></a><!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Hugo-Du</title><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css><link href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css rel=stylesheet><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/bash.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/python.min.js></script><script src=https://cdn.jsdelivr.net/npm/vega@5.17.0></script><script src=https://cdn.jsdelivr.net/npm/vega-lite@4.17.0></script><script src=https://cdn.jsdelivr.net/npm/vega-embed@6.12.2></script><script>hljs.initHighlightingOnLoad();</script><link rel=icon href=https://dupractice.github.io/media/hugo-logo.png></head><body><div class=wrapper><header class=header><nav class=nav><a href=/ class=nav-logo><img src=/media/hugo-logo.png width=50 height=50 alt=Hugo-ht></a><ul class=nav-links><li><a href=/>Home</a></li><li><a href=/en/projects/>Projects</a></li><li><a href=/en/research/>Research</a></li><li><a href=/en/blog/>Blog</a></li><li><a href=/cn/blog/>中文</a></li></ul></nav></header><main class=content role=main><div style=text-align:center><h1>Multiple ways to import text data in R</h1><p>Xinting Du
+/ 2023-08-09</p><hr></div><span class=article-toolbar><a href=https://github.com/DuPractice/DuPractice.github.io/edit/master/content/en/blog/2023-08-10-R_sf.md style=font-size:24px;color:#000 target=_blank><i class="fa fa-edit" aria-hidden=true title="Suggest an edit of this page"></i></a></span><aside class=toc>Table of Contents:<nav id=TableOfContents><ol><li><a href=#chapter-2-vector-data-handling-with-sfhttpstmieno2githubior-as-gis-for-economistsvector-basicshtml>Chapter 2. <a href=https://tmieno2.github.io/R-as-GIS-for-Economists/vector-basics.html>Vector Data Handling with sf</a></a></li></ol></nav></aside><div class="body-text list-text"><h2 id=chapter-2-vector-data-handling-with-sfhttpstmieno2githubior-as-gis-for-economistsvector-basicshtml>Chapter 2. <a href=https://tmieno2.github.io/R-as-GIS-for-Economists/vector-basics.html target=_blank rel="noreferrer noopener">Vector Data Handling with sf</a></h2><p>sf</p><p>do not need to create simple feature geometry from scratch.</p><p>An important feature of an sf object is that it is basically a data.frame with geometric information stored as a variable (column). This means that transforming an sf object works just like transforming a data.frame. Basically, everything you can do to a data.frame, you can do to an sf as well.</p><div class=highlight><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>
+<span style=color:#408080;font-style:italic># ------ Foundamentals  ------ #</span>
+<span style=color:#408080;font-style:italic># read shp file</span>
+eez <span style=color:#666>&lt;-</span> <span style=color:#00f>read_sf</span>(<span style=color:#ba2121>&#39;eez_v11.shp&#39;</span>)
+
+<span style=color:#408080;font-style:italic># writing to a shp file</span>
+<span style=color:#00f>st_write</span>(eez, layer <span style=color:#666>=</span> <span style=color:#ba2121>&#39;eez2&#39;</span>)
+
+<span style=color:#408080;font-style:italic># alternative way to save shp file in R</span>
+<span style=color:#00f>saveRDS</span>(eez, <span style=color:#ba2121>&#39;&#39;</span>eez2.rds<span style=color:#ba2121>&#39;&#39;</span>)
+
+<span style=color:#408080;font-style:italic># extract geometry column</span>
+<span style=color:#00f>st_geometry</span>(eez[1, ])[[1]][[1]]
+geometry <span style=color:#666>&lt;-</span> <span style=color:#00f>st_geometry</span>(eez)
+
+<span style=color:#408080;font-style:italic># plot it</span>
+<span style=color:#00f>plot</span>(<span style=color:#00f>st_geometry</span>(eez[1, ]))
+
+<span style=color:#408080;font-style:italic># register df as an sf object</span>
+<span style=color:#00f>st_as_sf</span>()
+
+<span style=color:#408080;font-style:italic># check the current CRS</span>
+<span style=color:#00f>st_crs</span>(eez)
+
+<span style=color:#408080;font-style:italic># turn a df with geographic coordinates into sf, (usually is a set of points) </span>
+well <span style=color:#666>&lt;</span>– <span style=color:#00f>import</span>(<span style=color:#ba2121>&#39;well.csv&#39;</span>)
+well.sf <span style=color:#666>&lt;-</span> well <span style=color:#666>%&gt;%</span>
+	<span style=color:#00f>st_as_sf</span>(coords <span style=color:#666>=</span> <span style=color:#00f>c</span>(<span style=color:#ba2121>&#39;longitude&#39;</span>, <span style=color:#ba2121>&#39;latitude&#39;</span>), crs <span style=color:#666>=</span> <span style=color:#00f>st_crs</span>(eez)) 
+
+<span style=color:#408080;font-style:italic># remove geometry</span>
+well <span style=color:#666>&lt;-</span> well.sf <span style=color:#666>%&gt;%</span>
+	<span style=color:#00f>st_drop_geometry</span>() 
+
+<span style=color:#408080;font-style:italic># transfer the CRS</span>
+eez2 <span style=color:#666>&lt;-</span> <span style=color:#00f>st_transform</span>(eez, <span style=color:#00f>st_crs</span>(eez)) <span style=color:#408080;font-style:italic># keep two sf objects using the same CRS is important for interacting or mapping them.</span>
+
+<span style=color:#408080;font-style:italic># quick view</span>
+<span style=color:#00f>plot</span>(eez<span style=color:#666>$</span>geometry) <span style=color:#408080;font-style:italic># using plot() rather ggplot() for a quick look </span>
+
+<span style=color:#408080;font-style:italic># interactive view</span>
+pic_eez <span style=color:#666>&lt;-</span> <span style=color:#00f>tm_shape</span>(eez) <span style=color:#666>+</span> <span style=color:#00f>tm_polygons</span>()  <span style=color:#408080;font-style:italic># first to create a static map</span>
+<span style=color:#00f>tmap_leaflet</span>(pic_eez)
+
+
+<span style=color:#408080;font-style:italic># ------ Geometrical operations ------ #</span>
+
+<span style=color:#408080;font-style:italic># create buffer</span>
+wells_buffer <span style=color:#666>&lt;-</span> <span style=color:#00f>st_buffer</span>(well.sf, dist <span style=color:#666>=</span> <span style=color:#666>1600</span>) <span style=color:#408080;font-style:italic># 1600 meters</span>
+
+<span style=color:#00f>tm_shape</span>(wells_buffer) <span style=color:#666>+</span>
+  <span style=color:#00f>tm_polygons</span>() <span style=color:#666>+</span>
+  <span style=color:#00f>tm_shape</span>(well.sf) <span style=color:#666>+</span>
+  <span style=color:#00f>tm_symbols</span>(col <span style=color:#666>=</span> <span style=color:#ba2121>&#34;red&#34;</span>, size <span style=color:#666>=</span> <span style=color:#666>0.1</span>) <span style=color:#666>+</span>
+  <span style=color:#00f>tm_layout</span>(frame <span style=color:#666>=</span> <span style=color:green;font-weight:700>NA</span>)
+  
+ 
+ <span style=color:#408080;font-style:italic># calculate the area of polygons</span>
+ <span style=color:#408080;font-style:italic># useful to construct area-weighted average of characteristics after spatially joining two polygon layers</span>
+ eez_area <span style=color:#666>&lt;-</span> <span style=color:#00f>mutate</span>(eez, area <span style=color:#666>=</span> <span style=color:#00f>as.numeric</span>(<span style=color:#00f>st_area</span>(eez)))  
+
+<span style=color:#408080;font-style:italic># st_union (not keep) and st_combine (keep the internal borders)</span>
+
+<span style=color:#408080;font-style:italic># st_simplify and ms_simplify</span>
+<span style=color:#408080;font-style:italic># Sometimes, a vector data is excessively detailed for your purpose. In such cases, you can simplify the spatial object using st_simplify() so that you can render the map much faster.</span>
+<span style=color:#00f>object.size</span>(eez)
+eez <span style=color:#666>&lt;-</span> <span style=color:#00f>read_sf</span>(<span style=color:#ba2121>&#39;eez_v11.shp&#39;</span>) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>select</span>(TERRITORY1, ISO_TER1, SOVEREIGN1) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>st_make_valid</span>() <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>group_by</span>(SOVEREIGN1) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>summarise</span>(geometry <span style=color:#666>=</span> <span style=color:#00f>st_union</span>(geometry)) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>distinct</span>() <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>st_simplify</span>(preserveTopology <span style=color:#666>=</span> T, dTolerance <span style=color:#666>=</span> <span style=color:#666>1000</span>)
+  
+  <span style=color:#408080;font-style:italic>#However, st_simplify() does not respect the internal borders. To simplify only the outer borders, use rmapshaper::ms_simplify(). The keep option controls the degree of simplifcation (the lower, the more simplified).</span>
+
+eez <span style=color:#666>&lt;-</span> <span style=color:#00f>read_sf</span>(<span style=color:#ba2121>&#39;eez_v11.shp&#39;</span>) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>select</span>(TERRITORY1, ISO_TER1, SOVEREIGN1) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>st_make_valid</span>() <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>group_by</span>(SOVEREIGN1) <span style=color:#666>%&gt;%</span>
+    <span style=color:#00f>summarise</span>(geometry <span style=color:#666>=</span> <span style=color:#00f>st_union</span>(geometry)) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>distinct</span>() <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>ms_simplify</span>(keep <span style=color:#666>=</span> <span style=color:#666>0.01</span>)
+
+</code></pre></div><p style=color:#777>Last modified on 2023-08-10</p></div><a href=#top><i class="fa fa-chevron-up" style=font-size:30px;color:#000></i></a></main><footer class=footer><script src=https://utteranc.es/client.js repo=DuPractice/DuPractice.github.io issue-term=pathname theme=github-light crossorigin=anonymous async></script><script type=text/javascript src=/js/math-code.js></script><script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type=text/javascript src=/js/center-img.js></script><ul class=footer-links><li><a href=/en/blog/index.xml type=application/rss+xml title="RSS feed">Subscribe</a></li><li><a href=http://creativecommons.org/licenses/by-nc-sa/4.0/ target=_blank>License
+<i class="fa fa-cc" aria-hidden=true title="Attribution-NonCommercial-ShareAlike 4.0 International"></i></a></li></ul><div class=copyright-text>©
+Xinting Du
+2023-2024</div></footer>

@@ -53,3 +53,4 @@ This is a collection of newspaper articles related to climate and the environmen
   - Lithium Scarcity Pushes Carmakers Into the Mining Business, NYT, Jul/2/2023, [link](https://www.nytimes.com/2023/07/02/business/lithium-mining-automakers-electric-vehicles.html).
     1. The deals that automakers are striking with mining companies and raw material processors hark back to the beginnings of the industry, when Ford set up rubber plantations in Brazil to secure material for tires. 
     2. In June, the Chinese battery maker CATL completed an agreement with Bolivia to invest $1.4 billion in two lithium projects.
+  - test

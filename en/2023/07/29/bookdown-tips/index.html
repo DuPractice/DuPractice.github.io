@@ -1,0 +1,60 @@
+<a name=top></a><!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Hugo-Du</title><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css><link href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css rel=stylesheet><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/bash.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/python.min.js></script><script src=https://cdn.jsdelivr.net/npm/vega@5.17.0></script><script src=https://cdn.jsdelivr.net/npm/vega-lite@4.17.0></script><script src=https://cdn.jsdelivr.net/npm/vega-embed@6.12.2></script><script>hljs.initHighlightingOnLoad();</script><link rel=icon href=https://dupractice.github.io/media/hugo-logo.png></head><body><div class=wrapper><header class=header><nav class=nav><a href=/ class=nav-logo><img src=/media/hugo-logo.png width=50 height=50 alt=Hugo-ht></a><ul class=nav-links><li><a href=/>Home</a></li><li><a href=/en/projects/>Projects</a></li><li><a href=/en/research/>Research</a></li><li><a href=/en/blog/>Blog</a></li><li><a href=/cn/blog/>中文</a></li></ul></nav></header><main class=content role=main><div style=text-align:center><h1>Gridding data in R</h1><p>Xinting Du
+/ 2023-07-29</p><hr></div><span class=article-toolbar><a href=https://github.com/DuPractice/DuPractice.github.io/edit/master/content/en/blog/2023-07-29-gridding_data_r.md style=font-size:24px;color:#000 target=_blank><i class="fa fa-edit" aria-hidden=true title="Suggest an edit of this page"></i></a></span><aside class=toc>Table of Contents:<nav id=TableOfContents></nav></aside><div class="body-text list-text"><p>I am pushing forward one of my projects, in which I wish to analyze on the grid level instead of on the administrative level. This kind of aggregation is popular in several studies, name a few, <a href=https://www.cambridge.org/core/journals/american-political-science-review/article/abs/legacy-of-historical-conflict-evidence-from-africa/6AD09AD8FDC0A82242F1873B6AB3478F target=_blank rel="noreferrer noopener">Besley and Reynal-Querol (2014)</a>
+, <a href="https://www.aeaweb.org/articles?id=10.1257/aer.20131311" target=_blank rel="noreferrer noopener">Michalopoulos and Papaioannou (2016)</a>
+, and <a href="https://www.aeaweb.org/articles?id=10.1257/aer.20150774" target=_blank rel="noreferrer noopener">Berman, et al (2017)</a>
+. While I was doing that, I confronted several problems and finally figured them out.</p><p><a href=https://stackoverflow.com/questions/52937483/r-fitting-a-grid-over-a-city-map-and-inputting-data-into-grid-squares target=_blank rel="noreferrer noopener">Reference</a>
+in stackoverflow (Notice that the code on this page could be wrong):</p><p>Code in this page used the georeferenced data of San Jose and a randomly-created crime data as an example.
+The workflow is:</p><ol><li>Make a grid of squares</li><li>Spatially join the vector data with the grids</li><li>Build the dataframe</li></ol><p>The output like this:</p><table><thead><tr><th>grid_id</th><th>num_assaults</th><th>num_thefts</th></tr></thead><tbody><tr><td>1</td><td>100</td><td>89</td></tr><tr><td>2</td><td>55</td><td>456</td></tr><tr><td>3</td><td>12</td><td>1321</td></tr><tr><td>4</td><td>48</td><td>498</td></tr><tr><td>5</td><td>66</td><td>6</td></tr></tbody></table><p>With sf, you can make a grid of squares with the st_make_grid() function. Here I&rsquo;ll make a 2km grid over San Jose&rsquo;s bounding box, then intersect it with the boundary of San Jose. Note that I&rsquo;m projecting to UTM zone 10N so I can specify the grid size in meters.</p><div class=highlight><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r><span style=color:#00f>library</span>(tigris)
+<span style=color:#00f>library</span>(tidyverse)
+<span style=color:#00f>library</span>(sf)
+<span style=color:#00f>options</span>(tigris_class <span style=color:#666>=</span> <span style=color:#ba2121>&#34;sf&#34;</span>, tigris_use_cache <span style=color:#666>=</span> <span style=color:green;font-weight:700>TRUE</span>)
+<span style=color:#00f>set.seed</span>(<span style=color:#666>1234</span>)
+
+<span style=color:#408080;font-style:italic>## set San Jose and grids </span>
+sj <span style=color:#666>&lt;-</span> <span style=color:#00f>places</span>(<span style=color:#ba2121>&#34;CA&#34;</span>, cb <span style=color:#666>=</span> <span style=color:green;font-weight:700>TRUE</span>) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>filter</span>(NAME <span style=color:#666>==</span> <span style=color:#ba2121>&#34;San Jose&#34;</span>) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>st_transform</span>(<span style=color:#666>26910</span>)
+
+g <span style=color:#666>&lt;-</span> sj <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>st_make_grid</span>(cellsize <span style=color:#666>=</span> <span style=color:#666>2000</span>) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>st_intersection</span>(sj) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>st_cast</span>(<span style=color:#ba2121>&#34;MULTIPOLYGON&#34;</span>) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>st_sf</span>() <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>mutate</span>(id <span style=color:#666>=</span> <span style=color:#00f>row_number</span>())
+  
+ <span style=color:#408080;font-style:italic>## generate some random crime data </span>
+  thefts <span style=color:#666>&lt;-</span> <span style=color:#00f>st_sample</span>(sj, size <span style=color:#666>=</span> <span style=color:#666>500</span>) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>st_sf</span>()
+
+assaults <span style=color:#666>&lt;-</span> <span style=color:#00f>st_sample</span>(sj, size <span style=color:#666>=</span> <span style=color:#666>200</span>) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>st_sf</span>()
+  
+<span style=color:#408080;font-style:italic>## check the plot</span>
+<span style=color:#00f>plot</span>(g<span style=color:#666>$</span>geometry)
+<span style=color:#00f>plot</span>(thefts, add <span style=color:#666>=</span> <span style=color:green;font-weight:700>TRUE</span>, col <span style=color:#666>=</span> <span style=color:#ba2121>&#34;red&#34;</span>)
+
+<span style=color:#408080;font-style:italic>## spatially joined the grid and the dataframe</span>
+theft_grid <span style=color:#666>&lt;-</span> g <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>st_join</span>(thefts) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>group_by</span>(id) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>summarize</span>(num_thefts <span style=color:#666>=</span> <span style=color:#00f>n</span>())
+
+<span style=color:#00f>plot</span>(theft_grid[<span style=color:#ba2121>&#34;num_thefts&#34;</span>])
+
+<span style=color:#408080;font-style:italic>## create the result</span>
+assault_grid <span style=color:#666>&lt;-</span> g <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>st_join</span>(assaults) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>group_by</span>(id) <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>na.omit</span>() <span style=color:#666>%&gt;%</span>
+  <span style=color:#00f>summarize</span>(num_assaults <span style=color:#666>=</span> <span style=color:#00f>n</span>()) 
+
+<span style=color:#00f>st_geometry</span>(assault_grid) <span style=color:#666>&lt;-</span> <span style=color:green;font-weight:700>NULL</span>
+
+crime_data <span style=color:#666>&lt;-</span> <span style=color:#00f>left_join</span>(theft_grid, assault_grid, by <span style=color:#666>=</span> <span style=color:#ba2121>&#34;id&#34;</span>)
+
+crime_data
+
+</code></pre></div><p style=color:#777>Last modified on 2023-08-10</p></div><a href=#top><i class="fa fa-chevron-up" style=font-size:30px;color:#000></i></a></main><footer class=footer><script src=https://utteranc.es/client.js repo=DuPractice/DuPractice.github.io issue-term=pathname theme=github-light crossorigin=anonymous async></script><script type=text/javascript src=/js/math-code.js></script><script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type=text/javascript src=/js/center-img.js></script><ul class=footer-links><li><a href=/en/blog/index.xml type=application/rss+xml title="RSS feed">Subscribe</a></li><li><a href=http://creativecommons.org/licenses/by-nc-sa/4.0/ target=_blank>License
+<i class="fa fa-cc" aria-hidden=true title="Attribution-NonCommercial-ShareAlike 4.0 International"></i></a></li></ul><div class=copyright-text>©
+Xinting Du
+2023-2024</div></footer>

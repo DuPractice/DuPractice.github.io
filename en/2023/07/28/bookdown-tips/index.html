@@ -1,0 +1,47 @@
+<a name=top></a><!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Hugo-Du</title><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css><link href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css rel=stylesheet><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/bash.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/python.min.js></script><script src=https://cdn.jsdelivr.net/npm/vega@5.17.0></script><script src=https://cdn.jsdelivr.net/npm/vega-lite@4.17.0></script><script src=https://cdn.jsdelivr.net/npm/vega-embed@6.12.2></script><script>hljs.initHighlightingOnLoad();</script><link rel=icon href=https://dupractice.github.io/media/hugo-logo.png></head><body><div class=wrapper><header class=header><nav class=nav><a href=/ class=nav-logo><img src=/media/hugo-logo.png width=50 height=50 alt=Hugo-ht></a><ul class=nav-links><li><a href=/>Home</a></li><li><a href=/en/projects/>Projects</a></li><li><a href=/en/research/>Research</a></li><li><a href=/en/blog/>Blog</a></li><li><a href=/cn/blog/>中文</a></li></ul></nav></header><main class=content role=main><div style=text-align:center><h1>When a R user began coding with Python III</h1><p>Xinting Du
+/ 2023-07-28</p><hr></div><span class=article-toolbar><a href=https://github.com/DuPractice/DuPractice.github.io/edit/master/content/en/blog/2023-07-28-python_starter_3.md style=font-size:24px;color:#000 target=_blank><i class="fa fa-edit" aria-hidden=true title="Suggest an edit of this page"></i></a></span><aside class=toc>Table of Contents:<nav id=TableOfContents><ol><li><a href=#method>Method</a></li><li><a href=#function>Function</a></li><li><a href=#module>Module</a></li></ol></nav></aside><div class="body-text list-text"><p>In this document, we continue our study on basics of Python.</p><h2 id=method>Method<a href=#method class=header-anchor arialabel=Anchor> #</a></h2><p>In Python, a method is a function that is associated with an object.
+It only works with that object
+It is used with dot notation: object.method()</p><p>Check more list methods <a href=https://www.w3schools.com/python/python_ref_list.asp target=_blank rel="noreferrer noopener">here</a>
+String methods <a href=https://www.w3schools.com/python/python_ref_string.asp target=_blank rel="noreferrer noopener">here</a></p><div class=highlight><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>
+cars <span style=color:#666>=</span> [<span style=color:#ba2121>&#39;Ford&#39;</span>, <span style=color:#ba2121>&#39;BMW&#39;</span>]
+cars<span style=color:#666>.</span>append(<span style=color:#ba2121>&#39;Mazda&#39;</span>)
+<span style=color:green;font-weight:700>print</span>(cars)
+
+cars<span style=color:#666>.</span>sort()
+<span style=color:green;font-weight:700>print</span>(cars)
+
+</code></pre></div><h2 id=function>Function<a href=#function class=header-anchor arialabel=Anchor> #</a></h2><p>In Python, a function is a named block of code that performs a specific task or set of operations.</p><p>Functions are <strong>reusable</strong> blocks of code that allow you to break down a larger problem into smaller, manageable parts.</p><div class=highlight><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>
+<span style=color:green;font-weight:700>def</span> <span style=color:#00f>is_even</span>(i):
+    <span style=color:#ba2121>&#34;&#34;&#34;
+</span><span style=color:#ba2121>    Input: i, a positive integer
+</span><span style=color:#ba2121>    Returns True if i is even, otherwise False
+</span><span style=color:#ba2121>    &#34;&#34;&#34;</span>
+    <span style=color:green;font-weight:700>return</span> i <span style=color:#666>%</span> <span style=color:#666>2</span> <span style=color:#666>==</span> <span style=color:#666>0</span>
+is_even(<span style=color:#666>5</span>)
+
+
+<span style=color:#408080;font-style:italic>## def is the keyword used to define the function</span>
+
+<span style=color:#408080;font-style:italic>## name of the function comes after def， in this case is_even is the name</span>
+<span style=color:#408080;font-style:italic>## then, in (), comes the parameters / arguments, in this case, **i** is the only argument</span>
+<span style=color:#408080;font-style:italic>## return something</span>
+</code></pre></div><h2 id=module>Module<a href=#module class=header-anchor arialabel=Anchor> #</a></h2><p>In Python, a module is a file containing Python definitions and statements. The module allows you to organize your code logically and separates it into reusable components.
+To use a module in Python, we need to import the module.</p><div class=highlight><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>
+<span style=color:#408080;font-style:italic>## import the entire module and access its contents using dot notation</span>
+<span style=color:green;font-weight:700>import</span> <span style=color:#00f;font-weight:700>math</span>
+<span style=color:green;font-weight:700>print</span>(math<span style=color:#666>.</span>sqrt(<span style=color:#666>16</span>))  <span style=color:#408080;font-style:italic># Output: 4.0</span>
+
+<span style=color:#408080;font-style:italic>## import specific functions or variables from the module</span>
+<span style=color:green;font-weight:700>from</span> <span style=color:#00f;font-weight:700>math</span> <span style=color:green;font-weight:700>import</span> sqrt
+<span style=color:green;font-weight:700>print</span>(sqrt(<span style=color:#666>16</span>))  <span style=color:#408080;font-style:italic># Output: 4.0</span>
+
+<span style=color:#408080;font-style:italic>## import the module and rename it</span>
+<span style=color:green;font-weight:700>import</span> <span style=color:#00f;font-weight:700>numpy</span> <span style=color:green;font-weight:700>as</span> <span style=color:#00f;font-weight:700>np</span>
+
+<span style=color:#408080;font-style:italic>## import specific function and rename it</span>
+<span style=color:green;font-weight:700>from</span> <span style=color:#00f;font-weight:700>math_operations</span> <span style=color:green;font-weight:700>import</span> subtract <span style=color:green;font-weight:700>as</span> sub
+
+</code></pre></div><p style=color:#777>Last modified on 2023-08-10</p></div><a href=#top><i class="fa fa-chevron-up" style=font-size:30px;color:#000></i></a></main><footer class=footer><script src=https://utteranc.es/client.js repo=DuPractice/DuPractice.github.io issue-term=pathname theme=github-light crossorigin=anonymous async></script><script type=text/javascript src=/js/math-code.js></script><script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type=text/javascript src=/js/center-img.js></script><ul class=footer-links><li><a href=/en/blog/index.xml type=application/rss+xml title="RSS feed">Subscribe</a></li><li><a href=http://creativecommons.org/licenses/by-nc-sa/4.0/ target=_blank>License
+<i class="fa fa-cc" aria-hidden=true title="Attribution-NonCommercial-ShareAlike 4.0 International"></i></a></li></ul><div class=copyright-text>©
+Xinting Du
+2023-2024</div></footer>

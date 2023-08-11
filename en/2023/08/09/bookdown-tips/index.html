@@ -1,0 +1,61 @@
+<a name=top></a><!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Hugo-Du</title><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css><link href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css rel=stylesheet><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/bash.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/python.min.js></script><script src=https://cdn.jsdelivr.net/npm/vega@5.17.0></script><script src=https://cdn.jsdelivr.net/npm/vega-lite@4.17.0></script><script src=https://cdn.jsdelivr.net/npm/vega-embed@6.12.2></script><script>hljs.initHighlightingOnLoad();</script><link rel=icon href=https://dupractice.github.io/media/hugo-logo.png></head><body><div class=wrapper><header class=header><nav class=nav><a href=/ class=nav-logo><img src=/media/hugo-logo.png width=50 height=50 alt=Hugo-ht></a><ul class=nav-links><li><a href=/>Home</a></li><li><a href=/en/projects/>Projects</a></li><li><a href=/en/research/>Research</a></li><li><a href=/en/blog/>Blog</a></li><li><a href=/cn/blog/>中文</a></li></ul></nav></header><main class=content role=main><div style=text-align:center><h1>Book Review: R as GIS for economist</h1><p>Xinting Du
+/ 2023-08-09</p><hr></div><span class=article-toolbar><a href=https://github.com/DuPractice/DuPractice.github.io/edit/master/content/en/blog/2023-08-11-R_sf_2.md style=font-size:24px;color:#000 target=_blank><i class="fa fa-edit" aria-hidden=true title="Suggest an edit of this page"></i></a></span><aside class=toc>Table of Contents:<nav id=TableOfContents><ol><li><a href=#chapter-3-spatial-interactions-of-vector-data-subsetting-and-joininghttpstmieno2githubior-as-gis-for-economistsint-vvhtml><a href=https://tmieno2.github.io/R-as-GIS-for-Economists/int-vv.html>Chapter 3. Spatial Interactions of Vector Data: Subsetting and Joining</a></a></li></ol></nav></aside><div class="body-text list-text"><h2 id=chapter-3-spatial-interactions-of-vector-data-subsetting-and-joininghttpstmieno2githubior-as-gis-for-economistsint-vvhtml><a href=https://tmieno2.github.io/R-as-GIS-for-Economists/int-vv.html target=_blank rel="noreferrer noopener">Chapter 3. Spatial Interactions of Vector Data: Subsetting and Joining</a></h2><p>3.2 Spatial Subsetting
+Could help researchers to narrow down the geographic scope of analysis.</p><div class=highlight><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-r data-lang=r>
+<span style=color:#408080;font-style:italic># ------ Subsetting  ------ #</span>
+
+<span style=color:#408080;font-style:italic># select only the grid that intersect with eez</span>
+grid_1 <span style=color:#666>&lt;-</span> grid[eez,]  <span style=color:#408080;font-style:italic># the default underlying topological relations is st_intersects()</span>
+grid_2 <span style=color:#666>&lt;-</span> grid[eez, , op <span style=color:#666>=</span> st_within] <span style=color:#408080;font-style:italic># change op = </span>
+
+
+<span style=color:#408080;font-style:italic># ------ Joining(will still use the target gis) ------ #</span>
+<span style=color:#408080;font-style:italic># point(target) vs polygon(source)</span>
+<span style=color:#00f>st_join</span>(wells, eez) <span style=color:#408080;font-style:italic># target first</span>
+
+<span style=color:#408080;font-style:italic># polygons vs polysons</span>
+
+IA_corn <span style=color:#666>&lt;-</span> <span style=color:#00f>readRDS</span>(<span style=color:#ba2121>&#34;Data/IA_corn.rds&#34;</span>)
+IA_corn
+<span style=color:#00f>tm_shape</span>(IA_corn) <span style=color:#666>+</span>
+  <span style=color:#00f>tm_polygons</span>(col <span style=color:#666>=</span> <span style=color:#ba2121>&#34;acres&#34;</span>) <span style=color:#666>+</span>
+  <span style=color:#00f>tm_layout</span>(frame <span style=color:#666>=</span> <span style=color:green;font-weight:700>FALSE</span>, legend.outside <span style=color:#666>=</span> <span style=color:green;font-weight:700>TRUE</span>)
+  
+HUC_IA <span style=color:#666>&lt;-</span> 
+  <span style=color:#00f>st_read</span>(<span style=color:#ba2121>&#34;Data/huc250k.shp&#34;</span>) <span style=color:#666>%&gt;%</span> 
+  dplyr<span style=color:#666>::</span><span style=color:#00f>select</span>(HUC_CODE) <span style=color:#666>%&gt;%</span> 
+  <span style=color:#00f>st_transform</span>(<span style=color:#00f>st_crs</span>(IA_corn)) <span style=color:#666>%&gt;%</span> 
+  <span style=color:#408080;font-style:italic>#--- select HUC units that overlaps with IA ---#</span>
+  .[IA_corn, ]
+  
+<span style=color:#00f>tm_shape</span>(IA_corn) <span style=color:#666>+</span>
+  <span style=color:#00f>tm_polygons</span>(col <span style=color:#666>=</span> <span style=color:#ba2121>&#34;acres&#34;</span>) <span style=color:#666>+</span>
+<span style=color:#00f>tm_shape</span>(HUC_IA) <span style=color:#666>+</span>
+  <span style=color:#00f>tm_polygons</span>(alpha <span style=color:#666>=</span> <span style=color:#666>0</span>) <span style=color:#666>+</span>
+  <span style=color:#00f>tm_layout</span>(frame <span style=color:#666>=</span> <span style=color:green;font-weight:700>FALSE</span>, legend.outside <span style=color:#666>=</span> <span style=color:green;font-weight:700>TRUE</span>)
+  
+HUC_joined <span style=color:#666>&lt;-</span> <span style=color:#00f>st_join</span>(HUC_IA, IA_corn) 
+  
+<span style=color:#408080;font-style:italic># ------ Intersection(will create new gis) ------ #</span>
+<span style=color:#408080;font-style:italic># Also, we just saw that area-weighted averages cannot be found using st_join() because it does not provide information about how much area of each HUC unit is intersecting with each of its intersecting counties. If we can get the geometry of the intersecting part of the HUC unit and the county, then we can calculate its area, which in turn allows us to find area-weighted averages of joined attributes. </span>
+
+HUC_intersections <span style=color:#666>&lt;-</span> <span style=color:#00f>st_intersection</span>(HUC_IA, IA_corn) <span style=color:#666>%&gt;%</span> 
+  <span style=color:#00f>mutate</span>(huc_county <span style=color:#666>=</span> <span style=color:#00f>paste0</span>(HUC_CODE, <span style=color:#ba2121>&#34;-&#34;</span>, county_code)
+
+<span style=color:#00f>tm_shape</span>(<span style=color:#00f>filter</span>(HUC_intersections, HUC_CODE <span style=color:#666>==</span> <span style=color:#ba2121>&#34;10170203&#34;</span>)) <span style=color:#666>+</span> 
+  <span style=color:#00f>tm_polygons</span>(col <span style=color:#666>=</span> <span style=color:#ba2121>&#34;huc_county&#34;</span>) <span style=color:#666>+</span>
+  <span style=color:#00f>tm_layout</span>(frame <span style=color:#666>=</span> <span style=color:green;font-weight:700>FALSE</span>)
+  
+HUC_aw_acres <span style=color:#666>&lt;-</span> HUC_intersections <span style=color:#666>%&gt;%</span> 
+  <span style=color:#408080;font-style:italic>#--- get area ---#</span>
+  <span style=color:#00f>mutate</span>(area <span style=color:#666>=</span> <span style=color:#00f>as.numeric</span>(<span style=color:#00f>st_area</span>(.))) <span style=color:#666>%&gt;%</span> 
+  <span style=color:#408080;font-style:italic>#--- get area-weight by HUC unit ---#</span>
+  <span style=color:#00f>group_by</span>(HUC_CODE) <span style=color:#666>%&gt;%</span> 
+  <span style=color:#00f>mutate</span>(weight <span style=color:#666>=</span> area <span style=color:#666>/</span> <span style=color:#00f>sum</span>(area)) <span style=color:#666>%&gt;%</span> 
+  <span style=color:#408080;font-style:italic>#--- calculate area-weighted corn acreage by HUC unit ---#</span>
+  <span style=color:#00f>summarize</span>(aw_acres <span style=color:#666>=</span> <span style=color:#00f>sum</span>(weight <span style=color:#666>*</span> acres))
+    
+
+</code></pre></div><p style=color:#777>Last modified on 2023-08-11</p></div><a href=#top><i class="fa fa-chevron-up" style=font-size:30px;color:#000></i></a></main><footer class=footer><script src=https://utteranc.es/client.js repo=DuPractice/DuPractice.github.io issue-term=pathname theme=github-light crossorigin=anonymous async></script><script type=text/javascript src=/js/math-code.js></script><script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type=text/javascript src=/js/center-img.js></script><ul class=footer-links><li><a href=/en/blog/index.xml type=application/rss+xml title="RSS feed">Subscribe</a></li><li><a href=http://creativecommons.org/licenses/by-nc-sa/4.0/ target=_blank>License
+<i class="fa fa-cc" aria-hidden=true title="Attribution-NonCommercial-ShareAlike 4.0 International"></i></a></li></ul><div class=copyright-text>©
+Xinting Du
+2023-2024</div></footer>

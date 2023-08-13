@@ -54,3 +54,19 @@ This is a collection of newspaper articles related to climate and the environmen
     1. The deals that automakers are striking with mining companies and raw material processors hark back to the beginnings of the industry, when Ford set up rubber plantations in Brazil to secure material for tires. 
     2. In June, the Chinese battery maker CATL completed an agreement with Bolivia to invest $1.4 billion in two lithium projects.
   - test
+  
+  - What Lula’s Victory in Brazil Means for Climate, NYT, Oct/31/2022, [link](https://www.nytimes.com/2022/10/31/climate/brazil-election-lula-bolsonaro-climate.html).
+    1. The president-elect once helped slash deforestation rates in the Amazon rainforest. He says he wants to do it again.
+  - What Is COP27? And Other Questions About the Big U.N. Climate Summit, NYT,  Oct/ 31/2022, [link](https://www.nytimes.com/article/cop27-climate-change-summit.html).
+    1. With the world still struggling to get global warming under control, diplomats are gathering in Egypt for United Nations climate talks.
+.  - Where My Climate Doubts Began to Melt, NYT, Oct/28/2022, [link](https://www.nytimes.com/interactive/2022/10/28/opinion/climate-change-bret-stephens.html).
+  - War in Ukraine Likely to Speed, Not Slow, Shift to Clean Energy, I.E.A. Says, NYT/ Oct/27/2022, [link](https://www.nytimes.com/2022/10/27/climate/global-clean-energy-iea.html).
+  - When Soup and Mashed Potatoes Are Thrown, Can the Earth Win? NYT, Oct/26/2022, [link](https://www.nytimes.com/2022/10/26/climate/art-climate-protests-monet.html).
+    1. The van Gogh and Monet paintings targeted in recent climate protests were unharmed. But a debate about tactics rages.
+  - Some good news on energy, NYT, Oct/25/2022, [link](https://www.nytimes.com/2022/10/25/climate/energy-transition-solar-wind.html).
+  - Nigeria Floods Kill Hundreds and Displace Over a Million, NYT, Oct/17/2022, [link](https://www.nytimes.com/2022/10/17/world/africa/nigeria-floods.html).
+    1. Every year, neighboring Cameroon — which runs along the length of Nigeria’s eastern border — releases water from a dam in northern Cameroon, causing flooding downstream in Nigeria. At the time of the dam’s construction, in the 1980s, the two countries agreed that a twin dam would be built on the Nigerian side to contain the overflow. But the second one was never realized.
+    
+  - 20 Nations at High Risk From Global Warming Might Halt Debt Payments, NYT, Oct/14/2022, [link](https://www.nytimes.com/2022/10/14/climate/climate-disasters-poor-nations-iimf.html).
+  
+

@@ -20,6 +20,8 @@ This is a collection of newspaper articles related to climate and the environmen
 
 {{<end>}}
 
+
+test
 - Where My Climate Doubts Began to Melt, NYT, Oct/28/2022, [link](https://www.nytimes.com/interactive/2022/10/28/opinion/climate-change-bret-stephens.html).
 
 ## Global Warming /& Extreme Heat

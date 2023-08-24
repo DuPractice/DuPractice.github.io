@@ -1,0 +1,81 @@
+<a name=top></a><!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Hugo-Du</title><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css><link href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css rel=stylesheet><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/bash.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/python.min.js></script><script src=https://cdn.jsdelivr.net/npm/vega@5.17.0></script><script src=https://cdn.jsdelivr.net/npm/vega-lite@4.17.0></script><script src=https://cdn.jsdelivr.net/npm/vega-embed@6.12.2></script><script>hljs.initHighlightingOnLoad();</script><link rel=icon href=https://dupractice.github.io/media/hugo-logo.png></head><body><div class=wrapper><header class=header><nav class=nav><a href=/ class=nav-logo><img src=/media/hugo-logo.png width=50 height=50 alt=Hugo-ht></a><ul class=nav-links><li><a href=/>Home</a></li><li><a href=/en/projects/>Projects</a></li><li><a href=/en/research/>Research</a></li><li><a href=/en/blog/>Blog</a></li><li><a href=/cn/blog/>中文</a></li></ul></nav></header><main class=content role=main><div style=text-align:center><h1>GEE: Data Download</h1><p>Xinting Du
+/ 2023-08-23</p><hr></div><span class=article-toolbar><a href=https://github.com/DuPractice/DuPractice.github.io/edit/master/content/en/blog/2023-08-23-GEE_2.md style=font-size:24px;color:#000 target=_blank><i class="fa fa-edit" aria-hidden=true title="Suggest an edit of this page"></i></a></span><aside class=toc>Table of Contents:<nav id=TableOfContents><ol><li><a href=#case-download-landsat-7-collection-1-tier-1-annual-ndvi-composite>Case: Download Landsat 7 Collection 1 Tier 1 Annual NDVI Composite</a></li><li><a href=#code>Code</a></li><li><a href=#conclusion>Conclusion</a></li></ol></nav></aside><div class="body-text list-text"><p>In this document, I will give an example to display how to download satellite data via Python API, and I will use Colab to program.</p><h2 id=case-download-landsat-7-collection-1-tier-1-annual-ndvi-composite>Case: Download Landsat 7 Collection 1 Tier 1 Annual NDVI Composite<a href=#case-download-landsat-7-collection-1-tier-1-annual-ndvi-composite class=header-anchor arialabel=Anchor> #</a></h2><p><a href=https://developers.google.com/earth-engine/datasets/catalog target=_blank rel="noreferrer noopener">Earth Engine Data Catalog</a>
+already lists all available collections. You can easily search out the one your project needs.</p><p>Actually, selecting appropriate collections could be a challenge if you are not familiar with the satellite data.</p><p>Here I will use <a href=https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LE07_C01_T1_ANNUAL_NDVI#bands target=_blank rel="noreferrer noopener">Landsat 7 Collection 1 Tier 1 Annual NDVI Composite</a>
+as an example.</p><p>Note that this collection uses the computed top-of-atmosphere (TOA) reflectance. Compared with the one used surface reflectance, TOA production presents the amount of sunlight that is reflected back into space by the Earth&rsquo;s surface and atmosphere without any atmospheric correction or consideration of the effects of topography. Simply speaking, the result of this collection will be disturbed by the clouds.</p><h2 id=code>Code<a href=#code class=header-anchor arialabel=Anchor> #</a></h2><ol><li>Connect with the google drive</li></ol><div class=highlight><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:green;font-weight:700>from</span> <span style=color:#00f;font-weight:700>google.colab</span> <span style=color:green;font-weight:700>import</span> drive
+drive<span style=color:#666>.</span>mount(<span style=color:#ba2121>&#39;/content/drive&#39;</span>)
+</code></pre></div><ol start=2><li>Import the packages</li></ol><div class=highlight><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:green;font-weight:700>try</span>:
+    <span style=color:green;font-weight:700>import</span> <span style=color:#00f;font-weight:700>geemap</span>
+<span style=color:green;font-weight:700>except</span> ModuleNotFoundError:
+    <span style=color:green;font-weight:700>if</span> <span style=color:#ba2121>&#39;google.colab&#39;</span> <span style=color:#a2f;font-weight:700>in</span> <span style=color:green>str</span>(get_ipython()):
+        <span style=color:green;font-weight:700>print</span>(<span style=color:#ba2121>&#34;package not found, installing w/ pip in Google Colab...&#34;</span>)
+        <span>!</span>pip install geemap
+    <span style=color:green;font-weight:700>else</span>:
+        <span style=color:green;font-weight:700>print</span>(<span style=color:#ba2121>&#34;package not found, installing w/ conda...&#34;</span>)
+        <span>!</span>conda install mamba <span style=color:#666>-</span>c conda<span style=color:#666>-</span>forge <span style=color:#666>-</span>y
+        <span>!</span>mamba install geemap <span style=color:#666>-</span>c conda<span style=color:#666>-</span>forge <span style=color:#666>-</span>y
+    <span style=color:green;font-weight:700>import</span> <span style=color:#00f;font-weight:700>geemap</span>
+    
+<span style=color:green;font-weight:700>import</span> <span style=color:#00f;font-weight:700>ee</span>
+<span style=color:green;font-weight:700>import</span> <span style=color:#00f;font-weight:700>os</span>
+<span style=color:green;font-weight:700>import</span> <span style=color:#00f;font-weight:700>geopandas</span> <span style=color:green;font-weight:700>as</span> <span style=color:#00f;font-weight:700>gpd</span>
+<span style=color:#408080;font-style:italic>## if there is no shapefile in the google drive, we could import the administrative unit shapefile from package pygadm</span>
+<span>!</span>pip install pygadm 
+<span style=color:green;font-weight:700>import</span> <span style=color:#00f;font-weight:700>pygadm</span>
+</code></pre></div><ol start=3><li>Initialize the geemap</li></ol><div class=highlight><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:green;font-weight:700>try</span>:
+        ee<span style=color:#666>.</span>Initialize()
+<span style=color:green;font-weight:700>except</span> <span style=color:#d2413a;font-weight:700>Exception</span> <span style=color:green;font-weight:700>as</span> e:
+        ee<span style=color:#666>.</span>Authenticate()
+        ee<span style=color:#666>.</span>Initialize()
+</code></pre></div><figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject><a href=/media/en_blog/2023-08-23-GEE-2/pic1.png itemprop=contentUrl><img itemprop=thumbnail src=/media/en_blog/2023-08-23-GEE-2/pic1.png alt=Authenticate width=450></a><figcaption><p>Authenticate</p></figcaption></figure><p>Just click the link and proceed accordingly.</p><ol start=4><li>Select the area of interest</li></ol><div class=highlight><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#408080;font-style:italic>#the file path in my google drive</span>
+shapefile_path <span style=color:#666>=</span> <span style=color:#ba2121>&#39;/content/drive/MyDrive/IDN_adm/IDN_adm1.shp&#39;</span>  
+<span style=color:#408080;font-style:italic># read the shapefile</span>
+gdf <span style=color:#666>=</span> gpd<span style=color:#666>.</span>read_file(shapefile_path) 
+<span style=color:#408080;font-style:italic># print the column names of the shapefile</span>
+<span style=color:green;font-weight:700>print</span>(gdf<span style=color:#666>.</span>head()) 
+
+<span style=color:#408080;font-style:italic># Filter the attribute data based on a condition</span>
+Riau <span style=color:#666>=</span> gdf[gdf[<span style=color:#ba2121>&#39;NAME_1&#39;</span>] <span style=color:#666>==</span> <span style=color:#ba2121>&#39;Riau&#39;</span>]
+<span style=color:green;font-weight:700>print</span>(Riau<span style=color:#666>.</span>head())
+<span style=color:#408080;font-style:italic># Convert GeoDataFrame to Earth Engine FeatureCollection</span>
+Riau <span style=color:#666>=</span> geemap<span style=color:#666>.</span>geopandas_to_ee(Riau)
+</code></pre></div><ol start=5><li>Draw the interactive map</li></ol><div class=highlight><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>Map <span style=color:#666>=</span> geemap<span style=color:#666>.</span>Map()
+Map<span style=color:#666>.</span>addLayer(Riau)
+Map
+</code></pre></div><figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject><a href=/media/en_blog/2023-08-23-GEE-2/pic2.png itemprop=contentUrl><img itemprop=thumbnail src=/media/en_blog/2023-08-23-GEE-2/pic2.png alt=Map width=450></a><figcaption><p>Map</p></figcaption></figure><p>I strongly recommend mapping first, in order to ensure the area of interest.</p><ol start=6><li>Output the image</li></ol><div class=highlight><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>
+<span style=color:green;font-weight:700>for</span> year <span style=color:#a2f;font-weight:700>in</span> <span style=color:green>range</span>(<span style=color:#666>1999</span>,<span style=color:#666>2017</span>):
+  d1 <span style=color:#666>=</span> <span style=color:green>str</span>(year)<span style=color:#666>+</span><span style=color:#ba2121>&#34;-01-&#34;</span><span style=color:#666>+</span><span style=color:#ba2121>&#34;01&#34;</span>
+  d2 <span style=color:#666>=</span> <span style=color:green>str</span>(year)<span style=color:#666>+</span><span style=color:#ba2121>&#34;-12-&#34;</span><span style=color:#666>+</span><span style=color:#ba2121>&#34;01&#34;</span>
+  <span style=color:green;font-weight:700>print</span>(d1)
+  Date_start <span style=color:#666>=</span> ee<span style=color:#666>.</span>Date(d1)
+  Date_end <span style=color:#666>=</span> ee<span style=color:#666>.</span>Date(d2)
+  <span style=color:#408080;font-style:italic># filter the image which we are interested in</span>
+    images <span style=color:#666>=</span> ee<span style=color:#666>.</span>ImageCollection(<span style=color:#ba2121>&#34;LANDSAT/LE07/C01/T1_ANNUAL_NDVI&#34;</span>) \ <span style=color:#408080;font-style:italic># import the ImageCollections</span>
+    <span style=color:#666>.</span>filterDate(Date_start, Date_end) \ <span style=color:#408080;font-style:italic>#filter the date</span>
+    <span style=color:#666>.</span>select([<span style=color:#ba2121>&#39;NDVI&#39;</span>]) <span style=color:#408080;font-style:italic># select the band</span>
+  
+    <span style=color:green>type</span>(images)
+  <span style=color:#408080;font-style:italic># now the *images* is an ee.ImageCollection, needs to be converted into ee.image</span>
+  
+  <span style=color:#408080;font-style:italic># convert to array</span>
+  array <span style=color:#666>=</span> images<span style=color:#666>.</span>toArray()
+  <span style=color:#408080;font-style:italic># convert to an image</span>
+  bandNames <span style=color:#666>=</span> images<span style=color:#666>.</span>aggregate_array(<span style=color:#ba2121>&#39;system:index&#39;</span>)
+  image <span style=color:#666>=</span> array<span style=color:#666>.</span>arrayProject([<span style=color:#666>0</span>])<span style=color:#666>.</span>arrayFlatten([bandNames])
+  
+  <span style=color:green;font-weight:700>print</span>(image<span style=color:#666>.</span>getInfo())
+
+ <span style=color:#408080;font-style:italic># output the image</span>
+  task <span style=color:#666>=</span> ee<span style=color:#666>.</span>batch<span style=color:#666>.</span>Export<span style=color:#666>.</span>image<span style=color:#666>.</span>toDrive(image<span style=color:#666>=</span>image,
+                 description<span style=color:#666>=</span><span style=color:#ba2121>&#39;NDVI_&#39;</span> <span style=color:#666>+</span><span style=color:green>str</span>(year), <span style=color:#408080;font-style:italic># image name</span>
+                 folder<span style=color:#666>=</span><span style=color:#ba2121>&#39;new_tmp&#39;</span>, <span style=color:#408080;font-style:italic># folder will be automatically constructed in google drive</span>
+                 scale<span style=color:#666>=</span><span style=color:#666>30</span>, <span style=color:#408080;font-style:italic>#resolution</span>
+                 region <span style=color:#666>=</span> Riau<span style=color:#666>.</span>geometry(),
+                 fileFormat<span style=color:#666>=</span><span style=color:#ba2121>&#39;GeoTIFF&#39;</span>,
+                 maxPixels<span style=color:#666>=</span><span style=color:#666>1e12</span>)
+  task<span style=color:#666>.</span>start()
+</code></pre></div><div class=highlight><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>task<span style=color:#666>.</span>status() <span style=color:#408080;font-style:italic>#could test the output process</span>
+</code></pre></div><figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject><a href=/media/en_blog/2023-08-23-GEE-2/pic3.png itemprop=contentUrl><img itemprop=thumbnail src=/media/en_blog/2023-08-23-GEE-2/pic3.png alt=Map width=450></a><figcaption><p>Map</p></figcaption></figure><p>If the task proceeds successfully, you could see it in the GEE task <a href=https://code.earthengine.google.com/tasks target=_blank rel="noreferrer noopener">manager</a>
+.</p><figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject><a href=/media/en_blog/2023-08-23-GEE-2/pic4.png itemprop=contentUrl><img itemprop=thumbnail src=/media/en_blog/2023-08-23-GEE-2/pic4.png alt=Map width=450></a><figcaption><p>Map</p></figcaption></figure><h2 id=conclusion>Conclusion<a href=#conclusion class=header-anchor arialabel=Anchor> #</a></h2><ol><li>Here I only provide the solution in Colab. Actually, we could also program in the GEE Javascript API.</li><li>In this example, I select Riau as the area of interest. It is a province in Indonesia.</li><li>However, if the area of interest is big, say, a country. Then, it may reach the limitation of the number of output pixels and report errors. One solution to manage this problem is to rescale the resolution.</li><li>The default storage of google drive is 15 GB, considering the satellite data is large, upgrading the storage is necessary.</li></ol><p style=color:#777>Last modified on 2023-08-24</p></div><a href=#top><i class="fa fa-chevron-up" style=font-size:30px;color:#000></i></a></main><footer class=footer><script src=https://utteranc.es/client.js repo=DuPractice/DuPractice.github.io issue-term=pathname theme=github-light crossorigin=anonymous async></script><script type=text/javascript src=/js/math-code.js></script><script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type=text/javascript src=/js/center-img.js></script><ul class=footer-links><li><a href=/en/blog/index.xml type=application/rss+xml title="RSS feed">Subscribe</a></li><li><a href=http://creativecommons.org/licenses/by-nc-sa/4.0/ target=_blank>License
+<i class="fa fa-cc" aria-hidden=true title="Attribution-NonCommercial-ShareAlike 4.0 International"></i></a></li></ul><div class=copyright-text>©
+Xinting Du
+2023-2024</div></footer>

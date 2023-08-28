@@ -21,10 +21,11 @@ This is a collection of newspaper articles related to climate and the environmen
 {{<end>}}
 
 
-test
 - Where My Climate Doubts Began to Melt, NYT, Oct/28/2022, [link](https://www.nytimes.com/interactive/2022/10/28/opinion/climate-change-bret-stephens.html).
 
 ## Global Warming /& Extreme Heat
+  -  Climate Risks Loom Over Panama Canal, a Vital Global Trade Link, NYT, Aug/25/2023, [link](https://www.nytimes.com/2023/08/25/climate/panama-canal-drought-global-trade.html).
+    1. Lack of rain and changing weather patterns are slowing the ship traffic that moves goods around the world.
   - What This Year's 'Astonishing' Ocean Heat Means for the Planet, NYT, Aug/3/2023, [link](https://www.nytimes.com/interactive/2023/08/03/climate/ocean-temperatures-heat-earth.html).
     1.  The extreme heat is devastating Florida’s coral reefs, but high ocean temperatures can have more widespread impacts, too, disrupting other marine ecosystems and the communities that depend on them.
   - A Desperate Push to Save Florida's Coral: Get It Out of the Sea, NYT, Jul/31/2023, [link](https://www.nytimes.com/2023/07/31/climate/coral-reefs-heat-florida-ocean-temperatures.html).    
@@ -90,6 +91,8 @@ test
 
 
 ## Pollution /& Health
+  - A First Look From NASA’s New Air Pollution Satellite, NYT, Aug/23/2023, [link](https://www.nytimes.com/2023/08/24/climate/air-quality-satellite-nasa-tempo.html).
+    1. A new mission will provide hourly updates of air quality in the United States.
   - Summer Heat Waves Killed 61,000 in Europe Last Year, Study Says, NYT, Jul/10/2023, [link](https://www.nytimes.com/2023/07/10/climate/heat-waves-europe-deaths.html).
   - Why the U.S. Is Backsliding on Clean Air, NYT, Jun/08/2023, [link](https://www.nytimes.com/2023/06/08/climate/air-quality-wildfire-smoke.html).
     1. Wildfire haze is erasing much of the progress made in past decades.

@@ -50,6 +50,7 @@ $$S_{p,t} = Occupation_{p,t} + log(population_{p,t}) + log(gdp_{p,t}) + \gamma_{
 $S_p,t$ is the dependent variable, which denotes the standardized sex ratio in corruption cases in province p in year t. $Occupation_p,t$ is the main independent variable, which I manually coded the state actors into three groups: government officials, urban non-private units (e.g., enterprises), and public institutions (e.g., hospitals and schools). $Occupation_p,t$ is 1 when the workplace is the public institution, and 2 and 3 the enterprises and the local government. Besides, I control the effect of provincial population and GDP and include the time and province fixed effect. The standard error is clustered on the provincial level.
 
 
+[^1]: Water
 
 
 

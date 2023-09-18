@@ -27,7 +27,7 @@ Based on the gender information, I constructed a measurement on the annual gende
 
 $$S_{p,t} = \frac{NM_{p,t}}{M_{p,t}} \times  \frac{F_{p,t}}{NF_{p,t}}$$
 
-where $NM_p,t$ is the number of male corrupt cases in province p in year t; $M_p,t$ is the number of male state actors in province p in year t; $NF_p,t$ is the number of female corrupt cases in province p in year t; and $F_p,t$ is the number of female state actor in province p in year t.
+where $NM_p$ is the number of male corrupt cases in province p in year t; $M_p,t$ is the number of male state actors in province p in year t; $NF_p,t$ is the number of female corrupt cases in province p in year t; and $F_p,t$ is the number of female state actor in province p in year t.
 
 
 Figure 1 displays the average standardized sex ratio in corruption cases from 2008 to 2016. The increasing trend suggests that male individuals were more likely to be involved in corrupt activities than female individuals during this period. In addition to the mean sex ratio, the plot also shows that the standard deviation of the sex ratio increased over time, which indicates a higher variation of corrupt individuals across provinces.

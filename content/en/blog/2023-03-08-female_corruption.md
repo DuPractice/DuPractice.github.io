@@ -40,7 +40,7 @@ To estimate the effect of Xi came into power I run the following regression:
 $$S_{p,t} = Xi_{t} + log(population_{p,t}) + log(gdp_{p,t}) + \gamma_{t} + \eta_{p}+\epsilon_{p,t} $$
 
 
-S_{p,t} is the dependent variable, which denotes the standardized sex ratio in corruption cases in province p in year t. $Xi_{t}$ is the main independent variable, which is 1 when Xi came into power in 2013. Besides, I control the effect of provincial population and GDP and include the time and province fixed effects. The standard error is clustered on the provincial level.
+$$S_{p,t}$$ is the dependent variable, which denotes the standardized sex ratio in corruption cases in province p in year t. $Xi_{t}$ is the main independent variable, which is 1 when Xi came into power in 2013. Besides, I control the effect of provincial population and GDP and include the time and province fixed effects. The standard error is clustered on the provincial level.
 
 To test the **marginalization mechanism** I run the following regression:
 

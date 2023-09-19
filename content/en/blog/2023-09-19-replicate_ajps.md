@@ -1,6 +1,6 @@
 ---
 title: "Art Gallery: Visualizations in AJPS"
-date: 2023-08-23T10:00:21-11:00
+date: 2023-09-18T10:00:21-11:00
 author: Xinting Du
 slug: bookdown-tips
 draft: false

@@ -36,7 +36,7 @@ This post summarizes the tables, figures, and graphs from American Journal of Po
 {{<figure src="/media/en_blog/2023-09-19-ajps-visual/pic1_figure5.jpeg" caption="Source: Figure 5. Kobayashi, Y., Cilizoglu, M., Heinrich, T., & Christiansen, W. (2023). No Entry in a Pandemic: Public Support for Border Closures. AJPS." width="900">}}
 
 4. Event study
-{{<figure src="/media/en_blog/2023-09-19-ajps-visual/pic8_figure3.jpeg" caption="Source: Figure 3. Helms, B. (2023). Global Economic Integration and Nativist Politics in Emerging Economies. AJPS." width="900">}}
+{{<figure src="/media/en_blog/2023-09-19-ajps-visual/pic8_figure3.png" caption="Source: Figure 3. Helms, B. (2023). Global Economic Integration and Nativist Politics in Emerging Economies. AJPS." width="900">}}
 
 5. Pre-trend assuamption
 {{<figure src="/media/en_blog/2023-09-19-ajps-visual/pic9_figure3.jpeg" caption="Source: Figure 3. Blair, C. W. (2022). The Fortification Dilemma: Border Control and Rebel Violence. AJPS." width="900">}}

@@ -9,5 +9,5 @@ I am an M.Phil. student in Social Science at Hong Kong University of Science and
 
 
 
-You can download my [Curriculum Vitae](https://hongtaoh.com/files/hongtao_hao_cv.pdf) here.
+You can download my [Curriculum Vitae](https://dupractice.github.io/files/cv_du.pdf) here.
 

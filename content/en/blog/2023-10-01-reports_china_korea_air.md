@@ -1,6 +1,6 @@
 ---
-title: "News Collection: Climate and Environment"
-date: 2023-05-01T13:37:57-05:00
+title: "News Collection: Transboundary air pollution between China and South Korea "
+date: 2023-10-01T13:37:57-05:00
 author: Xinting Du
 slug: second-post
 draft: false
@@ -28,5 +28,5 @@ This is a collection of newspaper articles related to transboundary air pollutio
   - China is to blame for South Korea's air pollution. Really? SCMP, Mar/15/2019,  [link](https://www.scmp.com/week-asia/health-environment/article/3001741/china-blame-south-koreas-air-pollution-really). 
   - South Koreans Have the World's Most Negative Views of China. Why? The Diplomat, Dec/24/2022, [link](https://thediplomat.com/2022/12/south-koreans-have-the-worlds-most-negative-views-of-china-why/). 
   - Pollution From Chinese Coal Casts a Global Shadow. NYT, Jun/11/2006, [link](https://www.nytimes.com/2006/06/11/business/worldbusiness/11chinacoal.html).
-  
+  - South Korea pollution: Is China the cause of 'fine dust'? BBC, Jun/6/2019, [link](https://www.bbc.com/news/world-asia-48346344).
   

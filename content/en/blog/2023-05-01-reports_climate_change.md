@@ -20,7 +20,7 @@ This is a collection of newspaper articles related to climate and the environmen
 
 {{<end>}}
 
-
+- Worries in the Path of China's Air, NYT, Dec/25/2013, [link](https://www.nytimes.com/2013/12/26/business/energy-environment/worries-in-the-path-of-chinas-air.html).
 - Where My Climate Doubts Began to Melt, NYT, Oct/28/2022, [link](https://www.nytimes.com/interactive/2022/10/28/opinion/climate-change-bret-stephens.html).
 
 ## Global Warming /& Extreme Heat

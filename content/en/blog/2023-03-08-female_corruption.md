@@ -39,7 +39,7 @@ According to the **risk aversion theory**, women are less likely to engage in co
 
 To estimate the effect of Xi came into power I run the following regression:
 
-$$S_{p,t} = Xi_{t} + log(population_{p,t}) + log(gdp_{p,t}) + \gamma_{t} + \eta_{p}+\epsilon_{p,t} $$
+$$S_{p,t} =  \beta_{1}Xi_{t} + \beta_{2} log(population_{p,t}) + \beta_{3}log(gdp_{p,t}) + \gamma_{t} + \eta_{p}+\epsilon_{p,t} $$
 
 
 `$S_{p,t}$` is the dependent variable, which denotes the standardized sex ratio in corruption cases in province p in year t. `$Xi_{t}$` is the main independent variable, which is 1 when Xi came into power in 2013. Besides, I control the effect of provincial population and GDP and include the time and province fixed effects. The standard error is clustered on the provincial level.
@@ -49,7 +49,7 @@ Figure 2 zooms into the coefficient of each year. It displays that after Xi came
 
 To test the **marginalization mechanism** I run the following regression:
 
-$$S_{p,t} = Occupation_{p,t} + log(population_{p,t}) + log(gdp_{p,t}) + \gamma_{t} + \eta_{p}+\epsilon_{p,t} $$
+$$S_{p,t} = \beta_{1}Occupation_{p,t} + \beta_{2}log(population_{p,t}) + \beta_{3}log(gdp_{p,t}) + \gamma_{t} + \eta_{p}+\epsilon_{p,t} $$
 
 I use the occupation as a proxy as the marginalization of the workplace because in the context of China, the provincial statistics yearbook shows that the male-to-female sex ratio is highest in local government, a male-dominated workplace, and lowest among public institution employees, a more gender-balanced workplace. According to the marginalization mechanism, women may be less corrupt because they lack the power to abuse it for personal gain. Building on this idea, we can predict that the gender difference in corruption cases will be greater among local government employees than among public institution employee..
 
